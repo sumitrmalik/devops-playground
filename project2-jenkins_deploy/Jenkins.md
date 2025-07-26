@@ -24,7 +24,7 @@ Developer commit code in GitHub -> Pull the code from GitHub -> Build the code -
 - Install Libraries
 - Install Jenkins
 
-1. Launch EC2 server and install docker on it
+1. Launch EC2 server for jenkins and install docker on it
 
 2. Java Download
 https://www.oracle.com/in/java/technologies/downloads/
@@ -43,6 +43,8 @@ https://github.com/jenkinsci/docker/blob/master/README.md
 ```Copy
 docker run -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk17
 ```
+
+4. Launch EC2 server for worker node and install docker on it
 
 **After installing Jenkins, Follow the below steps:**
 

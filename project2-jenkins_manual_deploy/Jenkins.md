@@ -24,9 +24,9 @@ Developer commit code in GitHub -> Pull the code from GitHub -> Build the code -
 - Install Libraries
 - Install Jenkins
 
-# Launch EC2 server and install docker on it
+1. Launch EC2 server and install docker on it
 
-# Java Download
+2. Java Download
 https://www.oracle.com/in/java/technologies/downloads/
 
 ```Copy
@@ -37,33 +37,177 @@ wget https://download.oracle.com/java/24/latest/jdk-24_linux-x64_bin.rpm
 yum install <jdk_package>
 ```
 
-# Install jenkins
+3. Install jenkins
 https://github.com/jenkinsci/docker/blob/master/README.md
 
 ```Copy
 docker run -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk17
 ```
 
-# Now Jenkins is installed and running on port 8080. To access Jenkins, open the following URL in a browser:
+**After installing Jenkins, Follow the below steps:**
 
-```Copy
+- Now Jenkins is installed and running on port 8080. To access Jenkins, open the following URL in a browser.
+```
 http://<ec2-instance-public-ip>:8080
 ```
-
-To get the initial admin password, run the following command:
-
-```Copy
-docker exec <jenkins_container_id_or_name> cat /var/jenkins_home/secrets/initialAdminPassword
+- To get the initial admin password, run the following command.
 ```
-![alt text](285498031-a1074f73-208f-4dca-807c-72fc457942d0.png)
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+![net-3](https://github.com/mathesh-me/ci-cd-dotnet-app-deployment/assets/144098846/a1074f73-208f-4dca-807c-72fc457942d0)
 
-Install the suggested plugins.
-![alt text](285498057-1581bdb7-f27b-478a-b621-75f42e399ddf.png)
+- Install the suggested plugins.
+![net-4](https://github.com/mathesh-me/ci-cd-dotnet-app-deployment/assets/144098846/1581bdb7-f27b-478a-b621-75f42e399ddf)
 
-Create an admin user. 
-![alt text](285498082-0d423304-d815-48f2-bc8b-f86fbada4d6f.png)
-![alt text](285498116-b953738a-dc3d-4ebb-9e2a-3b262a3e6191.png)
 
-Jenkins is now ready to use. 
-![alt text](285498306-be442fdc-7040-43c7-b0d7-c21bf7831d55.png)
+- Create an admin user.
+![net-5](https://github.com/mathesh-me/ci-cd-dotnet-app-deployment/assets/144098846/0d423304-d815-48f2-bc8b-f86fbada4d6f)
+![net-6](https://github.com/mathesh-me/ci-cd-dotnet-app-deployment/assets/144098846/b953738a-dc3d-4ebb-9e2a-3b262a3e6191)
 
+
+- Jenkins is now ready to use.
+![net-7](https://github.com/mathesh-me/ci-cd-dotnet-app-deployment/assets/144098846/be442fdc-7040-43c7-b0d7-c21bf7831d55)
+
+### Jenkins Terminologies
+
+- **Jenkins Job** - What work you want to do in Jenkins is called a Jenkins Job. It can be a build job, a test job, a deployment job, etc.
+
+- **Jenkins Pipeline** - A Jenkins Pipeline is a collection of Jenkins Jobs. It is used to organize Jenkins Jobs into stages.
+
+- **Master** - The Jenkins Master is the main Jenkins server. It is responsible for managing the Jenkins Jobs and the Jenkins Agents.
+
+- **Worker/Agent** - The Jenkins Worker/Agent is a machine that is responsible for running Jenkins Jobs. It is connected to the Jenkins Master.
+
+
+- Launch Jenkins Server On Docker- `docker run -p 8080:8080 -p 50000:50000 -dit --name jenkins --restart=on-failure -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk17`
+
+### Steps to Configure Jenkins Slave
+
+- Launch an EC2 Instance with `t2.medium` Instance Type(We will configure it as our Jenkins Agent/Slave node)
+
+- Run the below Command to download java JDK
+`wget https://download.oracle.com/java/17/archive/jdk-17.0.10_linux-x64_bin.rpm`
+`yum install jdk-17.0.10_linux-x64_bin.rpm -y`
+
+- Start the agent and join it to the Jenkins Master Node(You will get the below commands, from Jenkins master while adding this node, Don't use the below one, They are for my server)
+
+`curl -sO http://54.146.158.246:8080/jnlpJars/agent.jar`
+`java -jar agent.jar -jnlpUrl http://54.146.158.246:8080/computer/ec2/jenkins-agent.jnlp -secret 557af3ada1a128916ce4cac68d93ce7eb1b6d5e186ac18f43972697165a9f0d8 -workDir "/" &`
+
+### Jenkins Server
+
+- My Python Flask App Repository used for demonstration(Snake Game)[https://github.com/sudhanshuvlog/SnakeGame.git]
+
+- Create Cron Schedule Expression - https://crontab.guru/
+
+- DevOps First CI-CD Pipeline ![Build Pipeline](buildpipeline.png)
+
+- *Jenkinsfile* - A Jenkinsfile is a text file that contains the definition of a Jenkins Pipeline. It is written using the Groovy DSL (Domain-Specific Language) and is used to define the entire build process, including stages, steps, and other configurations. This approach provides consistency, repeatability, and easy collaboration in the software development and deployment process. A sample pipeline with name `jenkinsfile` is present in this repo.
+
+### Why do we need Jenkins Cluster (Or) Jenkins Master-Slave Architecture?
+
+- **Jenkins Cluster** is a group of Jenkins master nodes and slave nodes.
+- Consider a scenario with a Jenkins server and 1000 jobs to run. Running all jobs on a single Jenkins server consumes a lot of resources from the master node and becomes difficult to manage.
+
+**Example:**
+
+- Handling increased workload or parallel jobs might be challenging for a single machine, leading to slower build times.
+- If the master server fails or becomes unavailable, the entire CI/CD process is disrupted.
+
+### Pipeline in Jenkins
+
+- Jenkins Pipeline streamlines the execution of multiple stages within a single job, simplifying the overall workflow.
+- **Pre-requisites** - You need to install the `Pipeline plugin` in your Jenkins server.
+- Before the installation of the Pipeline plugin, the conventional approach involved running multiple jobs to handle distinct stages of a process.
+- With the installation of the Pipeline plugin, the need for managing multiple jobs is eliminated. Now, all stages can be seamlessly executed within a single job, optimizing the CI/CD pipeline.
+
+### Jenkinsfile
+
+- In Pipeline, we can define the stages in a file called `Jenkinsfile`.
+- Jenkinsfile uses Groovy language.
+- By encapsulating all stages within the Jenkinsfile, users can execute an entire workflow within a single job. This simplifies job management and enhances pipeline efficiency.
+- Example of Jenkinsfile:
+
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
+```
+
+### Jenkins Pipeline Triggers
+
+- Poll SCM - It will check the changes in the repository for every x minutes we mentioned.
+- If we use `Poll SCM` trigger, It will waste a lot of resources, It is better for the use cases for data backup, etc.
+- So we can use `Webhook` trigger, This trigger is event-driven and activates the Jenkins job only when there is a change in the repository.
+
+
+## GitHub Actions
+
+Seamless Integration:
+GitHub Actions seamlessly integrates with your GitHub repositories, allowing you to define workflows directly within your codebase.
+
+No Infrastructure Management:
+There's no need to manage infrastructure like EC2 instances or Jenkins servers. GitHub handles the underlying infrastructure, simplifying the setup process.
+
+Easy Configuration:
+Workflows are defined using YAML files within your repository, making it easy to version control and collaborate on CI/CD configurations.
+
+Event-Driven Triggers:
+GitHub Actions triggers workflows based on various events such as pushes, pull requests, issue comments, and more, ensuring your CI/CD pipeline responds dynamically to repository changes.
+
+### GitHub Actions Workflow
+
+- **Workflow** A GitHub Actions Workflow is an automated process designed to handle tasks such as building, testing, packaging, releasing, or deploying projects within your repository.
+- We have to create .github/workflows directory in our repository and we have to write the workflow in a file called `YAML` file.
+- Utilize triggers to initiate the Workflow. Triggers can include events such as pushes, pull requests, comments, or custom events based on your project's requirements.
+
+### Example of GitHub Actions Workflow
+
+```yaml
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+    
+        steps:
+        - uses: xxxxxxxxxxxxxxxx@xx
+        - name: Set up JDK 11
+        uses: xxxxxxxxxxxxxxxxxx@xx
+        with:
+            java-version: '11'
+        - name: Build with Maven
+        run: mvn -B package --file pom.xml
+```
+
+
+### GitHub Actions Hosted Runners
+
+- **GitHub Actions Hosted Runners** are virtual machines that are hosted by GitHub.
+- We can use the GitHub Actions Hosted Runners to run our CI/CD pipeline.
+- It's just like using Jenkins with EC2 instances (slave nodes).
+
+We can always refer to the [official documentation](https://docs.github.com/en/actions) for more information.<br>
+
+You can use this link to use already created codes for GitHub Actions: https://github.com/actions

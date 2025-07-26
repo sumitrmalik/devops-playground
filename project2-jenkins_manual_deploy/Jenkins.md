@@ -1,12 +1,28 @@
-# What is Jenkins?
+### Jenkins
 
-Jenkins is an open-source automation tool written in Java. It is used to automate the CI/CD process.
 
-# Jenkins Installation
+### What is CI/CD?
 
-    Install Java
-    Install Libraries
-    Install Jenkins
+- CI/CD stands for Continuous Integration and Continuous Delivery/Deployment.
+![alt text](image.png)
+
+- Continuous Integration is the practice of merging code changes into a central repository several times a day. It is used to detect bugs early in the development cycle.
+- Continuous Delivery is the practice of deploying code changes into a production environment. It is used to deliver code changes to the users.
+
+**CI/CD Process Example**
+
+
+Developer commit code in GitHub -> Pull the code from GitHub -> Build the code -> Test the code -> Deploy the code to the Dev environment -> Test the code in the Dev environment -> Deploy the code to the QA environment -> Test the code in the QA environment -> Deploy the code to the Production environment
+
+### What is Jenkins?
+
+- Jenkins is an open-source automation tool written in Java. It is used to automate the CI/CD process.
+
+**Jenkins Installation**
+
+- Install Java
+- Install Libraries
+- Install Jenkins
 
 # Launch EC2 server and install docker on it
 

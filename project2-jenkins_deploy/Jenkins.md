@@ -41,7 +41,13 @@ yum install <jdk_package>
 https://github.com/jenkinsci/docker/blob/master/README.md
 
 ```Copy
-docker run -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk17
+docker run \
+  --name jenkins \
+  --restart=on-failure \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -v jenkins_home:/var/jenkins_home \
+  jenkins/jenkins:lts-jdk17
 ```
 
 4. Launch EC2 server for worker node and install docker on it

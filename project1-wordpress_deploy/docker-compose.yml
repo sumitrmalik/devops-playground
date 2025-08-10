@@ -1,38 +1,64 @@
+# Use a specific version of the Docker Compose file format.
 version: '3.1'
+
+# Define the name for this entire project, which will be used as a prefix for containers, volumes, and networks.
 name: mywordpressproj
+
+# Define a custom network to allow services to communicate with each other.
+# Using a custom network provides better isolation and more predictable DNS resolution.
 networks:
   mywordpressnet:
     driver: bridge
+
+# Define the services (containers) for the application.
 services:
 
+  # This is the WordPress application container.
   wordpress:
+    # Use the official WordPress Docker image.
     image: wordpress
+    # Always restart the container if it stops for any reason.
     restart: always
+    # Map port 8080 on the host machine to port 80 in the container,
+    # making the WordPress site accessible from outside the container.
     ports:
       - 8080:80
+    # Define environment variables to configure the WordPress application.
+    # These variables are used by the WordPress image to connect to the MySQL database service named 'db'.
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: exampleuser
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
+    # Mount a named volume to persist the WordPress files. This ensures your data (themes, plugins, uploads)
+    # is not lost when the container is removed or updated.
     volumes:
       - wordpress:/var/www/html
+    # Connect this service to the custom network.
     networks:
       - mywordpressnet
 
+  # This is the MySQL database container.
   db:
+    # Use the official MySQL 8.0 Docker image.
     image: mysql:8.0
+    # Always restart the container if it stops.
     restart: always
+    # Define environment variables to configure the MySQL database.
     environment:
       MYSQL_DATABASE: exampledb
       MYSQL_USER: exampleuser
       MYSQL_PASSWORD: examplepass
-      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+      MYSQL_RANDOM_ROOT_PASSWORD: '1' # Generates a random root password, which is a good practice for development.
+    # Mount a named volume to persist the database data. This prevents data loss.
     volumes:
       - db:/var/lib/mysql
+    # Connect this service to the custom network.
     networks:
       - mywordpressnet
 
+# Define the named volumes used by the services.
+# Docker manages these volumes, so they persist beyond the life of the containers.
 volumes:
   wordpress:
   db:

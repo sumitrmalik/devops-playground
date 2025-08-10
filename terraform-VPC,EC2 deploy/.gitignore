@@ -1,3 +1,4 @@
+# Terraform files to ignore
 .terraform/
 *.tfplan
 *.tfstate

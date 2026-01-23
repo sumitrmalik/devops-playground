@@ -1,36 +1,44 @@
-# n8n on Local Kubernetes (Docker Desktop)
+# n8n on Local Kubernetes (Docker Desktop) with ngrok Tunneling
 
-This project provides a lightweight Kubernetes manifest to run **n8n** locally using **Docker Desktop**. It includes persistent storage to ensure your workflows and credentials survive pod restarts.
+This project provides a Kubernetes manifest to run **n8n** locally using **Docker Desktop**. It is pre-configured for **persistence** and includes instructions for using **ngrok** to expose local webhooks to the internet (essential for Telegram/WhatsApp bots).
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-* **Docker Desktop** installed.
-* **Kubernetes** enabled in Docker Desktop settings.
-* `kubectl` command-line tool installed.
+* **Docker Desktop** with **Kubernetes** enabled.
+* **kubectl** installed.
+* **ngrok** account and CLI installed.
 
-### Installation
+### 1. Start the ngrok Tunnel
 
-1. **Clone the repository:**
+Telegram and other services cannot "see" your localhost. You must create a public tunnel first:
+
 ```bash
-git clone https://github.com/your-username/n8n-kubernetes-local.git
-cd n8n-kubernetes-local
+ngrok http 30001
 
 ```
 
+*Note: We use port 30001 because that is the NodePort defined in our Kubernetes service.*
 
-2. **Deploy to Kubernetes:**
-Apply the manifest file to create the namespace, storage, and deployment:
+**Copy the HTTPS URL** provided by ngrok (e.g., `https://your-unique-id.ngrok-free.app`).
+
+### 2. Configure the Manifest
+
+Open `n8n-local.yaml` and update the `WEBHOOK_URL` environment variable with your ngrok URL:
+
+```yaml
+- name: WEBHOOK_URL
+  value: "https://your-unique-id.ngrok-free.app/"
+
+```
+
+### 3. Deploy to Kubernetes
+
 ```bash
 kubectl apply -f n8n-local.yaml
 
 ```
-
-
-3. **Access the App:**
-Once the pod is running, access n8n at:
-👉 **[http://localhost:30001](https://www.google.com/search?q=http://localhost:30001)**
 
 ---
 
@@ -38,53 +46,47 @@ Once the pod is running, access n8n at:
 
 ### Stop n8n (Pause)
 
-To free up system resources without deleting your configuration:
-
 ```bash
 kubectl scale deployment n8n --replicas=0 -n n8n
 
 ```
 
-### Start n8n (Resume)
-
-To bring n8n back online:
+### Start/Resume n8n
 
 ```bash
 kubectl scale deployment n8n --replicas=1 -n n8n
 
 ```
 
-### Check Status
+### Apply Configuration Changes
+
+If you change the `WEBHOOK_URL` in your YAML, run:
 
 ```bash
-kubectl get pods -n n8n
-
-```
-
-### View Logs
-
-If you need to troubleshoot:
-
-```bash
-kubectl logs -f deployment/n8n -n n8n
+kubectl apply -f n8n-local.yaml
+kubectl rollout restart deployment n8n -n n8n
 
 ```
 
 ---
 
-## 📂 Project Structure
+## 📂 Architecture & Persistence
 
-* `n8n-local.yaml`: The unified Kubernetes manifest containing:
-* **Namespace**: `n8n` (keeps things organized).
-* **PersistentVolumeClaim**: Local storage for the SQLite database and settings.
-* **Deployment**: The n8n container logic.
-* **Service**: A NodePort service to expose the UI on port `30001`.
+* **Namespace**: `n8n` (Isolation).
+* **PersistentVolumeClaim**: Saves workflows and credentials in `/home/node/.n8n`.
+* **Service**: Exposed via **NodePort 30001**.
+* **Environment Variables**:
+* `N8N_PROTOCOL`: set to `https` for tunnel compatibility.
+* `WEBHOOK_URL`: Required for external services to send data back to your local instance.
 
 
 
-## ⚠️ Notes
+## ⚠️ Important for Telegram Users/API 
 
-* **Data Persistence**: Data is stored in a local volume managed by Docker Desktop. Do not delete the `PersistentVolumeClaim` unless you want to wipe your workflows.
-* **Auto-Start**: If Docker Desktop is running, Kubernetes will attempt to restart the n8n pod automatically upon system login unless scaled to 0.
+Whenever your ngrok URL changes (on the free plan, it changes every time you restart ngrok):
+
+1. Update the `WEBHOOK_URL` in `n8n-local.yaml`.
+2. Re-apply the manifest.
+3. **In the n8n UI, toggle your workflow OFF and then ON again.** This re-registers the new URL with Telegram's servers.
 
 ---

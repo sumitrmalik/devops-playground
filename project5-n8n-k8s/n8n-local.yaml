@@ -38,6 +38,14 @@ spec:
           env:
             - name: N8N_PORT
               value: "5678"
+            # Your public HTTPS tunnel URL
+            #- name: WEBHOOK_URL
+            #  value: "https://<your-tunnel-url>.ngrok-free.app/"
+            #- name: N8N_PROTOCOL
+            #  value: "https"
+            # Sets the timezone for your automation
+            #- name: GENERIC_TIMEZONE
+            #  value: "Asia/Kolkata"
           volumeMounts:
             - name: n8n-data
               mountPath: /home/node/.n8n

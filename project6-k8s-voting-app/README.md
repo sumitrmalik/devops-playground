@@ -4,7 +4,7 @@ This project contains a multi-tier microservices application designed to run on 
 
 ---
 
-### ## Project Architecture
+### Project Architecture
 
 The application is composed of the following five components:
 
@@ -16,7 +16,7 @@ The application is composed of the following five components:
 
 ---
 
-### ## Deployment Configuration
+### Deployment Configuration
 
 The following table summarizes the networking and service configuration for each component:
 
@@ -29,7 +29,7 @@ The following table summarizes the networking and service configuration for each
 
 ---
 
-### ## How to Run
+### How to Run
 
 1. **Apply the configurations**:
 Ensure you have `kubectl` configured and run the following command in your terminal:
@@ -49,7 +49,7 @@ kubectl apply -f .
 
 ---
 
-### ## Resource Details
+### Resource Details
 
 * **Database**: Uses `postgres:15-alpine` with an `emptyDir` volume for storage.
 * **Redis**: Uses `redis:alpine` for a lightweight footprint.
@@ -57,7 +57,7 @@ kubectl apply -f .
 
 ---
 
-### ## Sample Output:
+### Sample Output:
 
 * **Voting Screen:**
 

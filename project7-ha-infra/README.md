@@ -15,8 +15,30 @@
 ```bash
 cd project7-ha-infra
 terraform init
-terraform apply -var="region=ap-south-1"
+terraform apply
 
 ```
+
+---
+
+### Sample Output:
+
+* **The "Healthy" Load Balancer:**
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+* **EC2 Instance Dashboard:**
+
+![alt text](image-2.png)
+
+* **Target Group Health Check:**
+
+![alt text](image-3.png)
+
+* **VPC Resource Map:**
+
+![alt text](image-4.png)
 
 ---

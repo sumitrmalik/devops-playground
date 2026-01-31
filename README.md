@@ -1,4 +1,4 @@
-# # 🛠️ DevOps Playground
+# DevOps Playground
 
 Welcome to my hands-on laboratory for DevOps and Cloud Engineering. This repository contains a collection of projects focused on **Infrastructure as Code (IaC)**, **Container Orchestration**, **CI/CD automation**, and **Cloud-Native architectures**.
 
@@ -6,7 +6,7 @@ Each project represents a real-world scenario designed to improve deployment spe
 
 ---
 
-## ## 🏗️ Projects Overview
+## Projects Overview
 
 | Project | Description | Key Tech Stack |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ Each project represents a real-world scenario designed to improve deployment spe
 
 ---
 
-## ## 🛠️ Technical Arsenal
+## Technical Arsenal
 
 The projects in this lab leverage my core technical competencies:
 
@@ -31,7 +31,7 @@ The projects in this lab leverage my core technical competencies:
 
 ---
 
-## ## 🚀 How to Use This Lab
+## How to Use This Lab
 
 1. **Prerequisites:** Ensure you have the necessary CLI tools installed (AWS CLI, Terraform, kubectl, etc.).
 2. **Clone the Repository:**
@@ -44,7 +44,7 @@ Each directory contains a specific `README.md` or set of instructions for deploy
 
 ---
 
-## ## 📫 Connect with Me
+## Connect with Me
 I am an **AWS Certified Solutions Architect** with 6+ years of experience in the DevOps space. Feel free to reach out for collaborations or technical discussions.
 
 * **LinkedIn:** [linkedin.com/in/sumit-r-malik/](https://linkedin.com/in/sumit-r-malik/) 

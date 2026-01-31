@@ -81,7 +81,7 @@ kubectl rollout restart deployment n8n -n n8n
 
 ---
 
-### ## Sample Output:
+### Sample Output:
 
 * **ngrok Screen:**
 

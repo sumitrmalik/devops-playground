@@ -2,7 +2,7 @@
 
 This project provides a Kubernetes manifest to run **n8n** locally using **Docker Desktop**. It is pre-configured for **persistence** and includes instructions for using **ngrok** to expose local webhooks to the internet (essential for Telegram/WhatsApp bots).
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -42,7 +42,7 @@ kubectl apply -f n8n-local.yaml
 
 ---
 
-## 🛠 Management Commands
+## Management Commands
 
 ### Stop n8n (Pause)
 
@@ -70,7 +70,7 @@ kubectl rollout restart deployment n8n -n n8n
 
 ---
 
-## 📂 Architecture & Persistence
+## Architecture & Persistence
 
 * **Namespace**: `n8n` (Isolation).
 * **PersistentVolumeClaim**: Saves workflows and credentials in `/home/node/.n8n`.
@@ -79,14 +79,20 @@ kubectl rollout restart deployment n8n -n n8n
 * `N8N_PROTOCOL`: set to `https` for tunnel compatibility.
 * `WEBHOOK_URL`: Required for external services to send data back to your local instance.
 
+---
 
+### ## Sample Output:
 
-## ⚠️ Important for Telegram Users/API 
+* **ngrok Screen:**
 
-Whenever your ngrok URL changes (on the free plan, it changes every time you restart ngrok):
+![alt text](image.png)
 
-1. Update the `WEBHOOK_URL` in `n8n-local.yaml`.
-2. Re-apply the manifest.
-3. **In the n8n UI, toggle your workflow OFF and then ON again.** This re-registers the new URL with Telegram's servers.
+* **n8n Screen:**
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
 
 ---

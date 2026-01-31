@@ -57,12 +57,14 @@ kubectl apply -f .
 
 ---
 
-**Sample Output:**
+### ## Sample Output:
 
 * **Voting Screen:**
+
 ![alt text](image.png)
 
 * **Voting Result:**
+
 ![alt text](image-1.png)
 
 ---

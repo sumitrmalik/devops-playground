@@ -13,7 +13,7 @@
 
 * **Deployment:**
 ```bash
-cd project-1-ha-web
+cd project7-ha-infra
 terraform init
 terraform apply -var="region=ap-south-1"
 

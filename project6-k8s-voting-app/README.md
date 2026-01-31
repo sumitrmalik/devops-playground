@@ -56,3 +56,13 @@ kubectl apply -f .
 * **Scaling**: All deployments are currently set to a default of `1` replica.
 
 ---
+
+**Sample Output:**
+
+* **Voting Screen:**
+![alt text](image.png)
+
+* **Voting Result:**
+![alt text](image-1.png)
+
+---

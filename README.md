@@ -31,19 +31,6 @@ The projects in this lab leverage my core technical competencies:
 
 ---
 
-## How to Use This Lab
-
-1. **Prerequisites:** Ensure you have the necessary CLI tools installed (AWS CLI, Terraform, kubectl, etc.).
-2. **Clone the Repository:**
-```bash
-git clone https://github.com/sumitrmalik/devops-playground.git
-
-```
-3. **Navigate to a Project:**
-Each directory contains a specific `README.md` or set of instructions for deployment.
-
----
-
 ## Connect with Me
 I am an **AWS Certified Solutions Architect** with 6+ years of experience in the DevOps space. Feel free to reach out for collaborations or technical discussions.
 

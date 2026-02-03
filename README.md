@@ -34,7 +34,8 @@ The projects in this lab leverage my core technical competencies:
 ## Connect with Me
 I am an **AWS Certified Solutions Architect** with 6+ years of experience in the DevOps space. Feel free to reach out for collaborations or technical discussions.
 
-* **LinkedIn:** [linkedin.com/in/sumit-r-malik/](https://linkedin.com/in/sumit-r-malik/) 
-* **Email:** [malik.r.sumit@gmail.com](mailto:malik.r.sumit@gmail.com) 
+* [**LinkedIn**](https://linkedin.com/in/sumit-r-malik/) 
+* [**Email**](mailto:malik.r.sumit@gmail.com)
+* [**Support this lab**](https://msha.ke/malikrsumit)
 
 ---

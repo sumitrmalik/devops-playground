@@ -10,12 +10,15 @@ Each project represents a real-world scenario designed to improve deployment spe
 
 | Project | Description | Key Tech Stack |
 | --- | --- | --- |
-| **Project 1: WordPress Deploy** | Scalable WordPress deployment with decoupled database architecture. | Docker, MySQL, Linux |
-| **Project 2: Jenkins Deploy** | Automated setup of a Jenkins controller with persistent storage and plugin configuration. | Jenkins (Groovy), Bash |
-| **Project 3: SonarQube Deploy** | Integrating static code analysis into the development lifecycle for code quality governance. | Docker, SonarQube, PostgreSQL |
-| **Project 4: Terraform AWS** | Provisioning resilient AWS infrastructure including VPCs, EC2 instances, and RDS databases. | <br>**Terraform**, AWS (EC2, RDS, VPC) |
-| **Project 5: n8n-k8s** | Self-hosted workflow automation tool deployed on a Kubernetes cluster. | <br>**Kubernetes**, Helm, YAML |
-| **Project 6: K8s Voting App** | A multi-tier microservices application demonstrating service discovery and load balancing. | **Kubernetes**, Redis, Python, .NET |
+| **Project 1: WordPress Deploy** | Scalable WordPress deployment with decoupled database architecture. | Docker, MySQL | ✅ Complete |
+| **Project 2: Jenkins Deploy** | Automated setup of a Jenkins controller with persistent storage. | Jenkins, Bash | ✅ Complete |
+| **Project 3: SonarQube Deploy** | Integrating static code analysis into the development lifecycle for code quality governance. | SonarQube, Docker | ✅ Complete |
+| **Project 4: Terraform AWS** | Provisioning resilient AWS infrastructure including VPCs, EC2 instances, and RDS databases. | <br>**Terraform**, AWS (EC2, RDS, VPC) | ✅ Complete |
+| **Project 5: n8n-k8s** | Self-hosted workflow automation tool deployed on a Kubernetes. | <br>**Kubernetes**, YAML | ✅ Complete |
+| **Project 6: K8s Voting App** | A multi-tier microservices application demonstrating service discovery and load balancing. | **Kubernetes**, Redis, .NET | ✅ Complete |
+| **Project 7: HA-Infra** | Designing High Availability infrastructure with auto-scaling. | **Terraform**, AWS | ✅ Complete |
+| **Project 8: Serverless API** | Building cost-efficient, event-driven architectures. | AWS Lambda, Python | 🏗️ Building |
+| **Project 9: Observability** | Implementing full-stack monitoring and log aggregation. | Prometheus, Grafana | 📅 Upcoming |
 
 ---
 
@@ -31,11 +34,25 @@ The projects in this lab leverage my core technical competencies:
 
 ---
 
-## Connect with Me
-I am an **AWS Certified Solutions Architect** with 6+ years of experience in the DevOps space. Feel free to reach out for collaborations or technical discussions.
+## Support the Playground
 
-* [**LinkedIn**](https://linkedin.com/in/sumit-r-malik/) 
+If these labs helped, solve a bug, or learn a new tool, consider supporting the continued development of this playground!
+
+* [**Buy Me a Coffee**](https://buymeacoffee.com/immalik) — Support my AWS lab costs.
+* [**Suggestion Box**](https://forms.gle/CJ3vesFzfqYpV3mA7) — Have a specific lab you want to see? Let me know here!
+
+---
+
+## Connect with Me
+
+I am an **AWS Certified Solutions Architect** passionate about Cloud-Native architectures and DevOps culture. Let's connect!
+
+* [**Personal Dashboard**](https://msha.ke/malikrsumit)
+* [**LinkedIn**](https://www.linkedin.com/in/sumit-r-malik/)
+* [**Instagram**](https://www.instagram.com/_immalik)
+* [**Twitter / X**](https://x.com/_immalik)
 * [**Email**](mailto:malik.r.sumit@gmail.com)
-* [**Support this lab**](https://msha.ke/malikrsumit)
+
+<img width="600" height="600" alt="aws-certified-solutions-architect-associate(1)" src="https://github.com/user-attachments/assets/a6e65c15-34fb-4f61-9077-ca63cc77deb6" />
 
 ---

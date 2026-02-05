@@ -1,0 +1,15 @@
+# Ignore sensitive AWS/Terraform files (CRITICAL)
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+.aws/
+credentials
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore local environment files
+.env
+*.log

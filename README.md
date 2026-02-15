@@ -8,8 +8,8 @@ Each project represents a real-world scenario designed to improve deployment spe
 
 ## Projects Overview
 
-| Project | Description | Key Tech Stack |
-| --- | --- | --- |
+| Project | Description | Key Tech Stack | Status |
+| --- | --- | --- | --- |
 | **Project 1: WordPress Deploy** | Scalable WordPress deployment with decoupled database architecture. | Docker, MySQL | ✅ Complete |
 | **Project 2: Jenkins Deploy** | Automated setup of a Jenkins controller with persistent storage. | Jenkins, Bash | ✅ Complete |
 | **Project 3: SonarQube Deploy** | Integrating static code analysis into the development lifecycle for code quality governance. | SonarQube, Docker | ✅ Complete |
@@ -17,8 +17,8 @@ Each project represents a real-world scenario designed to improve deployment spe
 | **Project 5: n8n-k8s** | Self-hosted workflow automation tool deployed on a Kubernetes. | <br>**Kubernetes**, YAML | ✅ Complete |
 | **Project 6: K8s Voting App** | A multi-tier microservices application demonstrating service discovery and load balancing. | **Kubernetes**, Redis, .NET | ✅ Complete |
 | **Project 7: HA-Infra** | Designing High Availability infrastructure with auto-scaling. | **Terraform**, AWS | ✅ Complete |
-| **Project 8: Serverless API** | Building cost-efficient, event-driven architectures. | AWS Lambda, Python | 🏗️ Building |
-| **Project 9: Observability** | Implementing full-stack monitoring and log aggregation. | Prometheus, Grafana | 📅 Upcoming |
+| **Project 8: Serverless API** | Building cost-efficient, event-driven architectures. | AWS Lambda, Python | ✅ Complete |
+| **Project 9: Observability** | Implementing full-stack monitoring and log aggregation. | Prometheus, Grafana | ✅ Complete |
 
 ---
 

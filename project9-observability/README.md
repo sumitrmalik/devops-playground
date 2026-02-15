@@ -1,4 +1,4 @@
-## Project 3: Enterprise Observability & Proactive Alerting
+## Enterprise Observability & Proactive Alerting
 
 **Goal:** Implement centralized monitoring to detect system failures and notify engineering teams in real-time.
 

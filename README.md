@@ -19,6 +19,7 @@ Each project represents a real-world scenario designed to improve deployment spe
 | **Project 7: HA-Infra** | Designing High Availability infrastructure with auto-scaling. | **Terraform**, AWS | ✅ Complete |
 | **Project 8: Serverless API** | Building cost-efficient, event-driven architectures. | AWS Lambda, Python | ✅ Complete |
 | **Project 9: Observability** | Implementing full-stack monitoring and log aggregation. | Prometheus, Grafana | ✅ Complete |
+| **Project 10: GitOps CI/CD** | End-to-end automated pipeline using GitOps principles for EKS. | AWS EKS, ArgoCD, GitHub Actions | 🏗️ In Progress |
 
 ---
 
